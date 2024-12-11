@@ -1,0 +1,12 @@
+{
+ "manifest_version": 3,
+ "name": "Email and Call Form",
+ "version": "1.0",
+ "description": "Extension that asks for an email and then shows a name and motive form.",
+ "permissions": [
+  "storage"
+ ],
+ "action": {
+  "default_popup": "popup.html"
+ }
+}
