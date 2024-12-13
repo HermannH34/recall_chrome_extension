@@ -38,12 +38,22 @@ document.getElementById('userFormSubmit').addEventListener('submit', function (e
    motive: motive,
   };
 
-  sendUserDataToAPI(userData);
+  fetch('https://recall-app-ashen.vercel.app/api/recall', {
+   method: 'POST',
+   mode: 'no-cors',
+   headers: {
+    'Content-Type': 'application/json',
+   },
+   body: JSON.stringify(userData),
+  });
 
-  window.close();
-
+  // Fermez la fenêtre après un délai minimal
+  setTimeout(() => {
+   window.close();
+  }, 50); // Délai de 50 ms pour s'assurer que le fetch est démarré
  });
 });
+
 
 function sendUserDataToAPI(userData) {
  fetch('https://recall-app-ashen.vercel.app/api/recall', {
@@ -54,12 +64,13 @@ function sendUserDataToAPI(userData) {
   },
   body: JSON.stringify(userData),
  })
-  .then(response => response.json())
-  .then(data => {
-   console.log('succes', data);
+  .then(response => {
+   console.log('Success:', response);
+   window.close();
   })
   .catch(error => {
    console.error('Error sending data: ', error);
   });
 }
+
 
