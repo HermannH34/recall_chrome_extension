@@ -38,8 +38,28 @@ document.getElementById('userFormSubmit').addEventListener('submit', function (e
    motive: motive,
   };
 
-  window.close();
+  sendUserDataToAPI(userData);
 
+  window.close();
 
  });
 });
+
+function sendUserDataToAPI(userData) {
+ fetch('https://recall-app-ashen.vercel.app/api/recall', {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: {
+   'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(userData),
+ })
+  .then(response => response.json())
+  .then(data => {
+   console.log('succes', data);
+  })
+  .catch(error => {
+   console.error('Error sending data: ', error);
+  });
+}
+

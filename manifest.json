@@ -4,9 +4,13 @@
  "version": "1.0",
  "description": "Extension that asks for an email and then shows a name and motive form.",
  "permissions": [
-  "storage"
+  "storage",
+  "https://recall-app-ashen.vercel.app/*"
  ],
  "action": {
-  "default_popup": "popup.html"
+  "default_popup": "popup.html",
+  "default_icon": {
+   "16": "16.png"
+  }
  }
 }
