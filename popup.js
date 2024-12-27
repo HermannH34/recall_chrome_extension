@@ -39,25 +39,11 @@ document.getElementById('userFormSubmit').addEventListener('submit', function (e
     };
 
     const url = 'https://recall-app-ashen.vercel.app/api/recall';
+    const success = navigator.sendBeacon(url, JSON.stringify(userData));
+    console.log('Beacon sent:', success);
 
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Data successfully sent:', userData);
-          window.close(); // Close the popup after a successful response
-        } else {
-          console.error('Failed to send data:', response.statusText);
-        }
-      })
-      .catch((error) => {
-        console.error('Error sending data:', error);
-      });
+    window.close();
   });
-
 
 });
 
